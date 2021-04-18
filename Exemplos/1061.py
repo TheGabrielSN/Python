@@ -1,30 +1,30 @@
 # https://www.urionlinejudge.com.br/judge/pt/problems/view/1061
 
-v1=input().split()
-d1=int(v1[1])
-v2=input().split(" : ")
-h1,m1,s1=list(map(int,v2))
-v1=input().split()
-d2=int(v1[1])
-v2=input().split(" : ")
-h2,m2,s2=list(map(int,v2))
-d=d2-d1
-h=h2-h1
-m=m2-m1
-s=s2-s1
-if m>=1 or h>=1 or d>=1:
-    if h<0:
-        h=24+h
-        d=d-1
-    if m<0:
-        m=60+m
-        h=h-1
-    if s<0:
-        s=60+s
-        m=m-1
-    if d<=0:
-        d=0
-    print("{} dia(s)".format(d))
-    print("{} hora(s)".format(h))
-    print("{} minuto(s)".format(m))
-    print("{} segundo(s)".format(s))
+dia_inicio = int(input().split()[1])
+momento_inicio = [int(x) for x in input().split(":")]
+
+dia_fim = int(input().split()[1])
+momento_fim = [int(x) for x in input().split(":")]
+
+dias = dia_fim - dia_inicio
+  
+horas = momento_fim[0] - momento_inicio[0]
+minutos = momento_fim[1] - momento_inicio[1]
+segundos = momento_fim[2] - momento_inicio[2]
+
+if (segundos < 0):
+  segundos += 60
+  minutos -= 1
+
+if (minutos < 0):
+  minutos +=60
+  horas -= 1
+
+if (horas < 0):
+  horas += 24
+  dias -= 1
+  
+print(dias, "dia(s)")
+print(horas, "hora(s)")
+print(minutos, "minuto(s)")
+print(segundos, "segundo(s)")
